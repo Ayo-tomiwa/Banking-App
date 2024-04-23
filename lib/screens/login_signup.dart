@@ -29,7 +29,7 @@ class _LoginSignupState extends State<LoginSignup> {
           children: [
             TextField(
               controller: emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Email', border: OutlineInputBorder()),
             ),
             const SizedBox(
@@ -37,7 +37,7 @@ class _LoginSignupState extends State<LoginSignup> {
             ),
             TextField(
               controller: passwordController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'password', border: OutlineInputBorder()),
             ),
             const SizedBox(
