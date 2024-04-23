@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String?)? onSaved;
 
   const CustomTextField({
+    super.key,
     required this.labelText,
     this.obscureText = false,
     this.validator,
@@ -29,7 +30,7 @@ class CustomButton extends StatelessWidget {
   final String text;
   final void Function() onPressed;
 
-  const CustomButton({required this.text, required this.onPressed});
+  const CustomButton({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

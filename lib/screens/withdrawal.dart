@@ -26,10 +26,10 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Withdrawal'),
+        title: const Text('Withdrawal'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -38,9 +38,9 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
             children: [
               Text(
                 'Available Balance: ₦${userData.balance.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 16.0),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               CustomTextField(
                 labelText: 'Amount',
                 keyboardType:
@@ -57,7 +57,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                 },
                 onSaved: (value) => _amount = value!,
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               CustomButton(
                   text: 'Withdraw',
                   onPressed: () {

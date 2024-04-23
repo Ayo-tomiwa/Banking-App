@@ -24,10 +24,10 @@ class _DepositScreenState extends State<DepositScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Deposit'),
+        title: const Text('Deposit'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -48,7 +48,7 @@ class _DepositScreenState extends State<DepositScreen> {
                 },
                 onSaved: (value) => _amount = value!,
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               CustomButton(
                   text: 'Deposit',
                   onPressed: () {

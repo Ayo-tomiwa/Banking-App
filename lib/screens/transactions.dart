@@ -13,6 +13,8 @@ class Transaction {
 }
 
 class TransactionsScreen extends StatelessWidget {
+  const TransactionsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final userData = Provider.of<UserData>(context);
@@ -23,10 +25,10 @@ class TransactionsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transaction History'),
+        title: const Text('Transaction History'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: ListView.builder(
           itemCount: transactions.length,
           itemBuilder: (context, index) {
@@ -44,17 +46,17 @@ class TransactionsScreen extends StatelessWidget {
 class TransactionListItem extends StatelessWidget {
   final Transaction transaction;
 
-  const TransactionListItem({required this.transaction});
+  const TransactionListItem({super.key, required this.transaction});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Icons
+      leading: const Icon(Icons
           .transfer_within_a_station), // Adjust icon based on transaction type
       title: Text(transaction.recipient),
       subtitle: Text(
         '₦${transaction.amount.toStringAsFixed(2)} - ${formatDate(transaction.timestamp)}',
-        style: TextStyle(fontSize: 14.0),
+        style: const TextStyle(fontSize: 14.0),
       ),
     );
   }
