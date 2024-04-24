@@ -14,7 +14,7 @@ class _CreditCardState extends State<CreditCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Container(
         height: 216,
         width: 380,
@@ -25,6 +25,7 @@ class _CreditCardState extends State<CreditCard> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -40,21 +41,43 @@ class _CreditCardState extends State<CreditCard> {
                   ],
                 ),
               ),
-              Column(
-                children: [
-                  Text(
-                    'Magent Black',
-                    style: ThemeStyles.cardDetails,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                          '4756',
-                          style: ThemeStyles.cardDetails,
-                          SvgPicture.asset(''))
-                    ],
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 24.0, bottom: 32.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Magent Black',
+                      style: ThemeStyles.cardDetails,
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 6.0),
+                          child: Text(
+                            '4756',
+                            style: ThemeStyles.cardDetails,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                          child: SvgPicture.asset('assets/card-dots.svg'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                          child: SvgPicture.asset('assets/card-dots.svg'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6.0),
+                          child: Text(
+                            '9018',
+                            style: ThemeStyles.cardDetails,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               )
             ],
           ),
