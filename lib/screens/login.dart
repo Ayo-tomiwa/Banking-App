@@ -1,5 +1,5 @@
 import 'package:bankingapp/screens/transfer.dart';
-import 'package:bankingapp/theme.dart';
+import 'package:bankingapp/utilities/theme.dart';
 import 'package:bankingapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

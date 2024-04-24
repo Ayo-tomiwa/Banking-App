@@ -1,4 +1,5 @@
 import 'package:bankingapp/screens/home.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -18,15 +19,38 @@ class _HomeWidgetState extends State<HomeWidget> {
       HomeScreen(),
       HomeScreen(),
     ];
+    void onTabTapped(index) {
+      setState(() {
+        selectedIndex = index;
+      });
+    }
+
     return Scaffold(
       body: widgetOptions.elementAt(selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         elevation: 0,
+        onTap: onTabTapped,
         currentIndex: selectedIndex,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/home-icon.svg'),
-            icon: Text('Home'),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset('assets/transactions-icon.svg'),
+            label: 'Transactions',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset('assets/settings-icon.svg'),
+            label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset('assets/smiley-icon.svg'),
+            label: 'Account',
           ),
         ],
       ),
