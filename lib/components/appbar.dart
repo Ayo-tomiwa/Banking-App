@@ -11,7 +11,7 @@ class AppBar1 extends StatefulWidget {
 class _AppBar1State extends State<AppBar1> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.only(top: 20.0, left: 15.0, right: 8.0),
       child: Row(
         children: [
@@ -22,22 +22,22 @@ class _AppBar1State extends State<AppBar1> {
               fontWeight: FontWeight.w800,
             ),
           ),
-          // Row(
-          //   children: [
-          //     IconButton(
-          //       icon: SvgPicture.asset(),
-          // onPressed:null,
-          //     ),
-          //  IconButton(
-          //       icon: SvgPicture.asset(),
-          // onPressed:null,
-          //     ),
-          //  IconButton(
-          //       icon: SvgPicture.asset(),
-          // onPressed:null,
-          //     ),
-          //   ],
-          // )
+          Row(
+            children: [
+              IconButton(
+                icon: SvgPicture.asset('assets/analytics-icon.svg'),
+                onPressed: null,
+              ),
+              IconButton(
+                icon: SvgPicture.asset('assets/search-icon.svg'),
+                onPressed: null,
+              ),
+              IconButton(
+                icon: SvgPicture.asset('assets/more-icon.svg'),
+                onPressed: null,
+              ),
+            ],
+          )
         ],
       ),
     );
