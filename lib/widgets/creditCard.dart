@@ -39,6 +39,22 @@ class _CreditCardState extends State<CreditCard> {
                     SvgPicture.asset('assets/hide-icon.svg'),
                   ],
                 ),
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Magent Black',
+                    style: ThemeStyles.cardDetails,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                          '4756',
+                          style: ThemeStyles.cardDetails,
+                          SvgPicture.asset(''))
+                    ],
+                  )
+                ],
               )
             ],
           ),
