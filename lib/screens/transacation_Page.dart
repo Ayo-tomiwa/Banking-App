@@ -5,7 +5,6 @@ import 'package:bankingapp/widgets/cardin_page.dart';
 import 'package:bankingapp/widgets/other_details_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:flutter_svg/svg.dart';
 
 class TransactionPage extends StatefulWidget {
   const TransactionPage(
@@ -80,7 +79,7 @@ class _TransactionPageState extends State<TransactionPage> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(right: 12.0),
-                      // child: SvgPicture.asset(''),
+                      child: SvgPicture.asset('assets/bankTransfer-icon.svg'),
                     ),
                     Text(
                       'Bank Transfer',
@@ -145,7 +144,7 @@ class _TransactionPageState extends State<TransactionPage> {
                         ),
                       ),
                     ),
-                    // SvgPicture.asset()
+                    SvgPicture.asset('assets/edit-icon.svg')
                   ],
                 ),
               ),

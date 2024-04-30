@@ -1,3 +1,4 @@
+import 'package:bankingapp/screens/home.dart';
 import 'package:bankingapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,8 +34,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
         child: Form(
           key: _formKey,
           child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Center content vertically
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'Available Balance: ₦${userData.balance.toStringAsFixed(2)}',
@@ -43,8 +43,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
               const SizedBox(height: 20.0),
               CustomTextField(
                 labelText: 'Amount',
-                keyboardType:
-                    TextInputType.number, // Set keyboard type for numbers
+                keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter an amount.';
@@ -65,7 +64,9 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                       _formKey.currentState!.save();
                       _handleWithdrawal();
                       Navigator.pop(
-                          context); // Go back to Home Screen after successful withdrawal
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
                     }
                   }),
             ],

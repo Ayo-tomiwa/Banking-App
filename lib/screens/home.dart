@@ -56,7 +56,8 @@ class HomeScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TransactionsScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const TransactionsScreen()),
               ),
               child: const Text('Transaction History'),
             ),

@@ -28,7 +28,7 @@ class _AddNoteState extends State<AddNote> {
           ),
         ),
         decoration: BoxDecoration(
-          color: Color(0xffe8e8e9),
+          color: const Color(0xffe8e8e9),
           borderRadius: BorderRadius.circular(8.0),
         ),
       ),
