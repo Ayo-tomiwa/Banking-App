@@ -30,7 +30,7 @@ class ThemeStyles {
     fontSize: 16.0,
     color: ThemeColors.black,
   );
-  static TextStyle otherDetailsSecondary = TextStyle(
+  static TextStyle otherDetailsSecondary = const TextStyle(
     fontSize: 12.0,
     color: Colors.grey,
   );

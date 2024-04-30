@@ -20,7 +20,7 @@ class _CardsListState extends State<CardsList> {
   ];
   int _currentCard = 0;
 
-  final PageController _pageController = pageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   @override
   void dispose() {
     // TODO: implement dispose
@@ -40,7 +40,7 @@ class _CardsListState extends State<CardsList> {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 32.0, left: 15.0, bottom: 16.0),
+            padding: const EdgeInsets.only(top: 32.0, left: 15.0, bottom: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +49,7 @@ class _CardsListState extends State<CardsList> {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 246.0,
             child: PageView.builder(
               itemCount: cardList.length,
@@ -59,15 +59,18 @@ class _CardsListState extends State<CardsList> {
               itemBuilder: (context, index) => const CreditCard(),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              for (int i = 0; i < cardList.length; i++)
-                if (_currentCard == i)
-                  DotIndicator(true)
-                else
-                  DotIndicator(false)
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (int i = 0; i < cardList.length; i++)
+                  if (_currentCard == i)
+                    DotIndicator(true)
+                  else
+                    DotIndicator(false)
+              ],
+            ),
           ),
         ],
       ),
