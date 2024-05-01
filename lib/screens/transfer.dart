@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TransferScreen extends StatefulWidget {
-  TransferScreen({Key? key}) : super(key: key);
+  const TransferScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
