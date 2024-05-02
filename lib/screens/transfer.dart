@@ -1,12 +1,10 @@
-import 'package:bankingapp/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TransferScreen extends StatefulWidget {
-  const TransferScreen({super.key});
+  const TransferScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _TransferScreenState createState() => _TransferScreenState();
 }
 
@@ -15,12 +13,38 @@ class _TransferScreenState extends State<TransferScreen> {
   String _recipient = '';
   String _amount = '';
 
-  void _handleTransfer() async {
-    // Implement transfer logic using recipient and amount (API call)
-    // Update balance in provider upon successful transfer
+  void _handleTransfer() {
     final userData = Provider.of<UserData>(context, listen: false);
-    // Update balance based on your API response (replace with actual logic)
-    // Consider validations and error handling for insufficient funds, etc.
+
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+
+      // Simulate transfer logic (deduct amount from balance)
+      double transferAmount = double.parse(_amount);
+      if (transferAmount <= userData.balance) {
+        userData.setBalance(userData.balance - transferAmount);
+
+        // Add transaction to user's transaction history
+        Transaction transaction = Transaction(
+          type: TransactionType.Transfer,
+          amount: transferAmount,
+          recipient: _recipient,
+        );
+        userData.addTransaction(transaction);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Transfer successful!'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Insufficient funds!'),
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -29,39 +53,39 @@ class _TransferScreenState extends State<TransferScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Transfer'),
+        title: Text('Transfer'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Center content vertically
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomTextField(
-                labelText: 'Recipient Phone Number',
+              TextFormField(
+                decoration:
+                    InputDecoration(labelText: 'Recipient Phone Number'),
+                keyboardType: TextInputType.phone,
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter recipient phone number.';
                   }
-                  // Add validation for phone number format (optional)
                   return null;
                 },
                 onSaved: (value) => _recipient = value!,
-                keyboardType: TextInputType.phone,
               ),
               const SizedBox(height: 10.0),
-              CustomTextField(
-                labelText: 'Amount',
-                keyboardType:
-                    TextInputType.number, // Set keyboard type for numbers
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Amount'),
+                keyboardType: TextInputType.number,
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter an amount.';
-                  } else if (double.parse(value) <= 0) {
+                  }
+                  double? amount = double.tryParse(value);
+                  if (amount == null || amount <= 0) {
                     return 'Please enter a valid amount.';
-                  } else if (double.parse(value) > userData.balance) {
+                  } else if (amount > userData.balance) {
                     return 'Insufficient funds.';
                   }
                   return null;
@@ -69,15 +93,10 @@ class _TransferScreenState extends State<TransferScreen> {
                 onSaved: (value) => _amount = value!,
               ),
               const SizedBox(height: 20.0),
-              CustomButton(
-                  text: 'Transfer',
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      _handleTransfer();
-                      // Handle successful transfer UI or navigation (optional)
-                    }
-                  }),
+              ElevatedButton(
+                onPressed: _handleTransfer,
+                child: const Text('Transfer'),
+              ),
             ],
           ),
         ),
@@ -86,12 +105,35 @@ class _TransferScreenState extends State<TransferScreen> {
   }
 }
 
-class UserData {
-  get balance => null;
+class UserData extends ChangeNotifier {
+  double balance = 1000.0;
 
-  get transactions => null;
+  get transactions => null; // Initial balance
 
-  void setBalance(param0) {}
+  void setBalance(double newBalance) {
+    balance = newBalance;
+    notifyListeners();
+  }
+
+  void addTransaction(Transaction transaction) {}
+
+  void setAccountNumber(String accountNumber) {}
 
   void setLogin(bool bool) {}
+
+  // Other methods like setLogin, setAccountNumber, addTransaction, etc.
+}
+
+enum TransactionType { Deposit, Withdrawal, Transfer }
+
+class Transaction {
+  final TransactionType type;
+  final double amount;
+  final String recipient;
+
+  Transaction({
+    required this.type,
+    required this.amount,
+    required this.recipient,
+  });
 }

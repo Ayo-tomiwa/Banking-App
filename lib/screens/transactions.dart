@@ -2,14 +2,13 @@ import 'package:bankingapp/screens/transfer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-// Import your transaction model class (if applicable)
 
 class Transaction {
-  final String recipient; // Replace with transaction data fields
+  final String recipient;
   final double amount;
   final DateTime timestamp;
 
-  Transaction(this.recipient, this.amount, this.timestamp);
+  Transaction(this.recipient, this.amount, this.timestamp, {required type});
 }
 
 class TransactionsScreen extends StatelessWidget {

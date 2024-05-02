@@ -12,10 +12,10 @@ class _AppBar1State extends State<AppBar1> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20.0, left: 15.0, right: 8.0),
+      padding: const EdgeInsets.only(top: 20.0, left: 15.0, right: 8.0),
       child: Row(
         children: [
-          Text(
+          const Text(
             'Home',
             style: TextStyle(
               fontSize: 25.0,
