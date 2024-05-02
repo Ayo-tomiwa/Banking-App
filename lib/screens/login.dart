@@ -6,7 +6,7 @@ import 'package:bankingapp/utilities/theme.dart';
 import 'package:bankingapp/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -29,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         String accountNumber = _phoneNumber;
 
         // Update login state in provider
+        // ignore: use_build_context_synchronously
         Provider.of<UserData>(context, listen: false).setLogin(true);
         Provider.of<UserData>(context, listen: false)
             .setAccountNumber(accountNumber);
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<bool> _authenticate(String phoneNumber, String password) async {
     // Simulate a delay to mimic network request
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     // Simulate successful authentication (Replace this with your actual logic)
     // For demonstration purposes, check if phone number is valid (starts with '080') and password is 'password'
